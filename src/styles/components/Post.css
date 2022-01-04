@@ -1,0 +1,25 @@
+.Post{
+	border: 1px solid red; 
+	flex-basis: calc(50% - 1rem);
+	margin:1rem 0;
+
+	display: grid;
+	align-items: center;
+	grid-template-columns: 0.9fr 0.1fr;
+}
+
+.Post__main{ 
+}
+
+.Post__button-container{
+	padding:3rem 0.5rem;
+	background-color: #F5F5F5;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.Post__button{
+	cursor: pointer;
+}
