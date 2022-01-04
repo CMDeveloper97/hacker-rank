@@ -14,12 +14,14 @@ export const FavsSelector = ({selected, onClick}: Props) => {
 			<div
 				onClick={onChangeToggle} 
 				className={`Toogle-container__Toggle-element  ${selected && 'Toogle-container__Toggle-element--active'}`}> 
-				All
+				<p>All</p>
 			</div>
 			<div  
 				onClick={onChangeToggle} 
 				className={`Toogle-container__Toggle-element  ${!selected && 'Toogle-container__Toggle-element--active'}`}> 
-				My Favs
+				<p>
+					My Faves
+				</p>
 			</div>
 		</div>
 	);
