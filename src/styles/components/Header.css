@@ -1,0 +1,14 @@
+.Header{
+	background: -moz-repeating-linear-gradient();
+	border-bottom: 1px solid gray;
+	padding:2rem 0;
+}
+
+.Header__wrapper{
+
+}
+
+.Header__text{
+	text-align: start;
+	text-transform: uppercase;
+}

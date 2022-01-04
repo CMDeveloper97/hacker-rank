@@ -15,13 +15,14 @@ function App() {
   const [favsSelected, setfavsSelected] = useState(false)
 
   return (
-    <div className="App">
+    <div className="App"> 
+      <Header />
+ 
 
       <pre>
         {'favsSelected: ' + JSON.stringify(favsSelected)}
       </pre>
 
-      <Header />
       <MainContainer>
         <FavsSelector selected={favsSelected} onClick={setfavsSelected} />
         <Filter />

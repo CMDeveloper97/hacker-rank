@@ -4,10 +4,16 @@
 	--text-gray: #828282;
 }
 
-p{
+p,h1,h2,h3,h4,h5{
 	margin: 0;
 }
 
 html{ 
 	user-select: none;
+}
+
+.Container{
+	max-width: 1200px;
+	margin: 0 auto;  
+	/* padding: 3rem 3rem 0 3rem;  */
 }

@@ -1,9 +1,11 @@
-import React from 'react'
+import "../styles/components/Header.css";
 
 export const Header = () => {
 	return (
-		<div>
-			<h1>Hacker News</h1>
+		<div className="Header">
+			<div className="Container Header__wrapper"> 
+				<h1 className="Header__text">Hacker News</h1>
+			</div>
 		</div>
 	)
 }
