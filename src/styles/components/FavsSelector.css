@@ -1,0 +1,27 @@
+ .ToogleContainer{   
+	display: flex;
+	justify-content: center; 
+ }
+
+ .ToogleContainer__ToggleElement{
+	 border: 2px solid var(--border-gray);
+	 padding: 0.4rem 2rem;
+	 cursor: pointer;
+ }
+
+ .ToogleContainer__ToggleElement--active{
+	 color: var(--blue);
+	 border: 2px solid var(--blue);
+}
+
+.ToogleContainer__ToggleElement:first-of-type{ 
+	border-top-left-radius: 0.5rem; 
+	border-bottom-left-radius: 0.5rem;
+	border-right: none;
+}
+
+.ToogleContainer__ToggleElement:last-of-type{ 
+	border-top-right-radius: 0.5rem; 
+	border-bottom-right-radius: 0.5rem;
+}
+ 

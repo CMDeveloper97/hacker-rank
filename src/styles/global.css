@@ -1,0 +1,13 @@
+:root{
+	--blue: #1797ff;
+	--border-gray:#d6d6d6; 
+	--text-gray: #828282;
+}
+
+p{
+	margin: 0;
+}
+
+html{ 
+	user-select: none;
+}

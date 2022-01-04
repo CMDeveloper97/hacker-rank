@@ -1,4 +1,6 @@
 import "./App.css";
+import "./styles/global.css"
+
 import {
   Header,
   MainContainer,
@@ -7,13 +9,21 @@ import {
   Pagination,
   PostsContainer,
 } from "./components";
+import { useState } from "react";
 
 function App() {
+  const [favsSelected, setfavsSelected] = useState(false)
+
   return (
     <div className="App">
+
+      <pre>
+        {'favsSelected: ' + JSON.stringify(favsSelected)}
+      </pre>
+
       <Header />
       <MainContainer>
-        <FavsSelector />
+        <FavsSelector selected={favsSelected} onClick={setfavsSelected} />
         <Filter />
         <PostsContainer />
         <Pagination />
