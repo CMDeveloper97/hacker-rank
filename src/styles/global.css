@@ -1,6 +1,7 @@
 :root{
 	--blue: #1797ff;
 	--border-gray:#d6d6d6; 
+	--border-dark-gray:#979797; 
 	--text-gray: #828282;
 }
 
@@ -27,6 +28,7 @@ p{
 
 .Container{
 	max-width: 1200px;
-	margin: 0 auto;  
+	margin: 0 auto;   
+	padding:0 3rem;
 	/* padding: 3rem 3rem 0 3rem;  */
 }

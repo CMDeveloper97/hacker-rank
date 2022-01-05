@@ -1,23 +1,37 @@
 .Post{
-	border: 1px solid red; 
-	flex-basis: calc(50% - 1rem);
-	margin:1rem 0;
+	border: 1.5px solid var(--border-dark-gray); 
+	border-radius: 0.6rem; 
+	margin:1rem 0; 
+	display: flex;
+    align-items: center; 
+}
 
-	display: grid;
-	align-items: center;
-	grid-template-columns: 0.9fr 0.1fr;
+
+@media only screen and (min-width: 768px) {
+	.Post{ 
+		flex-basis: calc(50% - 1rem); 
+	}
 }
 
 .Post__main{ 
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .Post__button-container{
+	width: 12%;
+
 	padding:3rem 0.5rem;
 	background-color: #F5F5F5;
 
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	border-top-right-radius: 0.6rem; 
+	border-bottom-right-radius: 0.6rem;
 }
 
 .Post__button{

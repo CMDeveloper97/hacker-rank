@@ -1,12 +1,18 @@
-import '../../styles/components/PostsContainers.css';
-import { Post } from '../Post'
 
-export const PostsContainer = () => {
+import '../../styles/components/PostsContainers.css';
+import { TPost } from '../../types/Posts'; 
+import { Post } from '..';
+
+type Props = {
+	posts: TPost[];
+}
+
+export const PostsContainer = ({posts}: Props) => {
 	return (
 		<div className='Container Posts-container'>
 			{
-				[1,2,3,4,5].map(element=> ( 
-					<Post/>
+				posts.map(post=> ( 
+					<Post {...post} />
 				))
 			}
 		</div>

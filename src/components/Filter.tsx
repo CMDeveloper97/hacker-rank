@@ -1,9 +1,15 @@
- export const Filter = () => {
+import { Dispatch, SetStateAction } from 'react';
+type Props = {
+  query: string;
+  setQuery: Dispatch<SetStateAction<string>>; 
+}
+
+export const Filter = ({query, setQuery}: Props) => {   
   return (
-    <select>
-      <option value="A">Apple</option>
-      <option value="B">Banana</option>
-      <option value="C">Cranberry</option>
+    <select onChange={e=>setQuery(e.target.value)} value={query}>
+      <option value="angular">Angular</option>
+      <option value="react">React</option>
+      <option value="vue">Vue</option>
     </select>
   );
 };

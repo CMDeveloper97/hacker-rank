@@ -9,24 +9,36 @@ import {
   Pagination,
   PostsContainer,
 } from "./components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { TPost } from "./types/Posts";
 
 function App() {
-  const [favsSelected, setfavsSelected] = useState(false)
+  const [favsSelected, setfavsSelected] = useState(false);
+  const [query, setQuery] = useState<string>('angular');
+  const [posts, setPosts] = useState<TPost[]>([])
+
+  useEffect(() => {
+    fetchAPI(query);
+  }, [query])
+
+  const fetchAPI = async (query: string) => {
+    const api = await fetch(`https://hn.algolia.com/api/v1/search_by_date?query=${query}&page=0`);
+    const response = await api.json();  
+    setPosts(response.hits);
+  }
 
   return (
     <div className="App"> 
-      <Header />
- 
-
+      <Header /> 
+      
       <pre>
-        {'favsSelected: ' + JSON.stringify(favsSelected)}
+        {'favsSelected: ' + JSON.stringify(favsSelected)} 
       </pre>
 
       <MainContainer>
         <FavsSelector selected={favsSelected} onClick={setfavsSelected} />
-        <Filter />
-        <PostsContainer />
+        <Filter query={query} setQuery={setQuery}/>
+        <PostsContainer posts={posts} />
         <Pagination />
       </MainContainer>
     </div>
