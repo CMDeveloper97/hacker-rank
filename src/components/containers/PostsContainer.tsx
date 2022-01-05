@@ -12,7 +12,7 @@ export const PostsContainer = ({posts}: Props) => {
 		<div className='Container Posts-container'>
 			{
 				posts.map(post=> ( 
-					<Post {...post} />
+					<Post key={post.objectID} {...post} />
 				))
 			}
 		</div>

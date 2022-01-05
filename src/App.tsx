@@ -11,26 +11,25 @@ import {
 } from "./components";
 import { useEffect, useState } from "react";
 import { TPost } from "./types/Posts";
+import { THackerNewsResponse } from "./types/HacerNewsResponse";
+import { usePages } from "./hooks/usePages";
+import { usePosts } from './hooks/usePosts';
 
 function App() {
   const [favsSelected, setfavsSelected] = useState(false);
-  const [query, setQuery] = useState<string>('angular');
-  const [posts, setPosts] = useState<TPost[]>([])
-
+  const [query, setQuery] = useState<string>('angular');   
+  
+  const { posts, setNewPosts } = usePosts();
+  const { page, totalPages, setPage, setTotalPages } = usePages();
+ 
   useEffect(() => {
-    fetchAPI(query);
-  }, [query])
-
-  const fetchAPI = async (query: string) => {
-    const api = await fetch(`https://hn.algolia.com/api/v1/search_by_date?query=${query}&page=0`);
-    const response = await api.json();  
-    setPosts(response.hits);
-  }
+    setNewPosts(query, page, setTotalPages);
+  }, [query, page]) 
 
   return (
     <div className="App"> 
       <Header /> 
-      
+
       <pre>
         {'favsSelected: ' + JSON.stringify(favsSelected)} 
       </pre>
@@ -39,7 +38,7 @@ function App() {
         <FavsSelector selected={favsSelected} onClick={setfavsSelected} />
         <Filter query={query} setQuery={setQuery}/>
         <PostsContainer posts={posts} />
-        <Pagination />
+        {/* <Pagination page={page} totalPages={totalPages} setPage={setPage}/> */}
       </MainContainer>
     </div>
   );
