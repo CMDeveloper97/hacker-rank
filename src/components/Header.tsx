@@ -1,10 +1,11 @@
 import "../styles/components/Header.css";
+import HackerNews from '../assets/hacker-news.png'
 
 export const Header = () => {
 	return (
 		<div className="Header">
 			<div className="Container Header__wrapper"> 
-				<h1 className="Header__text">Hacker News</h1>
+				<img src={HackerNews} alt="main-logo" />
 			</div>
 		</div>
 	)

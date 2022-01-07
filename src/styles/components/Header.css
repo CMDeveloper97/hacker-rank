@@ -4,11 +4,10 @@
 	padding:2.5rem 0;
 }
 
-
-.Header__wrapper{
-
+.Header img {
+	width: 20rem;
 }
-
+ 
 .Header__text{
 	text-align: start;
 	text-transform: uppercase;
