@@ -38,13 +38,16 @@ export const PostsProvider = ({children}: any) => {
 		const api = await fetch(`https://hn.algolia.com/api/v1/search_by_date?query=${query}&page=${page}`);
 		const response: THackerNewsResponse = await api.json();    
 		const savePosts:TPost[] = response.hits.filter((post, idx) => { 
-			if(post.author !== null && post.created_at !== null && post.story_title !== null && post.story_url !== null){   
-				if(postsState.favorites.find(x => x.story_id === post.story_id)){
-					response.hits[idx] = {...post, favorite: true};
-				}   
+			if(post.author !== null && post.created_at !== null && post.story_title !== null && post.story_url !== null){    
 				return post;
 			}
-		});        
+		});       
+		
+		savePosts.forEach((post, idx) => {
+			if(postsState.favorites.find(x => x.story_id === post.story_id)){ 
+				savePosts[idx] = {...post, favorite: true};
+			} 
+		});
 
 		dispatch({type: 'getPosts', payload: savePosts});
 	}

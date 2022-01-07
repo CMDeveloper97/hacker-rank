@@ -7,7 +7,7 @@ import { PostsContext } from '../context/posts/PostsContext';
 
 export const Post = (props: TPost) => {
   const { author, created_at, story_title, story_url, favorite } = props; 
-  const { addFavorite, removeFavorite } = useContext(PostsContext); 
+  const { addFavorite, removeFavorite } = useContext(PostsContext);   
  
   const functionExample = () =>{ 
     window.open(story_url, '_blank'); 

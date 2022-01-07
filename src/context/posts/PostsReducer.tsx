@@ -21,7 +21,7 @@ export const PostsReducer = (state: TPostsState, action: PostAction): TPostsStat
 				...state,
 				favorites: state.favorites.filter(favorite=> favorite.story_id !== action.payload)
 			}
-		case 'getPosts':    
+		case 'getPosts':   
 			return {
 				...state,
 				posts: action.payload
