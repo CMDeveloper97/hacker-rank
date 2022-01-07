@@ -1,0 +1,23 @@
+.Filter{
+	margin: 0 auto; 
+	justify-content: center;
+	margin-top: 2rem; 
+	margin-bottom: 2rem;
+}
+
+@media only screen and (min-width: 768px) {
+	.Filter {  
+		margin-top: 1rem; 
+		margin-bottom: 1rem;
+	}
+}
+
+.Filter select{ 
+	width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+	.Filter select{  
+		width: auto;
+	}
+}

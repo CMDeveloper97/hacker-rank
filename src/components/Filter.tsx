@@ -1,3 +1,5 @@
+import "../styles/components/Filter.css";
+
 import { Dispatch, SetStateAction } from 'react';
 type Props = {
   query: string;
@@ -6,7 +8,7 @@ type Props = {
 
 export const Filter = ({query, setQuery}: Props) => {   
   return (
-    <div className='Container'>
+    <div className='Container Filter'>
       <select onChange={e=>setQuery(e.target.value)} value={query}>
         <option value="angular">Angular</option>
         <option value="react">React</option>
