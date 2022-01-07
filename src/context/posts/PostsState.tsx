@@ -1,0 +1,64 @@
+import React, { useReducer } from 'react'
+import { TPost } from '../../types/Posts'; 
+import { PostsReducer } from './PostsReducer'; 
+import { PostsContext } from './PostsContext';
+import { THackerNewsResponse } from '../../types/HacerNewsResponse';
+
+export interface TPostsState {
+	posts: TPost[]; 
+	favorites: TPost[];
+}    
+
+export const PostsProvider = ({children}: any) => {     
+	const favorites = localStorage.getItem('favorites') as string; 
+
+	const initialState: TPostsState = { 
+		posts: [],
+		favorites: favorites ? JSON.parse(favorites) : []
+	} 
+
+	const [postsState, dispatch] = useReducer(PostsReducer, initialState);    
+
+	const addFavorite = (post: TPost) => { 
+		var index = postsState.posts.map(x => x.story_id).indexOf(post.story_id); 
+		postsState.posts[index] = {...postsState.posts[index], favorite: true} 
+
+		post = {...post, favorite: true}; 
+		dispatch({type: 'addFavorite', payload: post});
+	};  
+
+	const removeFavorite = (id: number) => {   
+		var index = postsState.posts.map(x => x.story_id).indexOf(id); 
+		postsState.posts[index] = {...postsState.posts[index], favorite: false}
+
+		dispatch({type: 'removeFavorite', payload: id});
+	}
+
+	const getPosts = async (query: string, page: number) => {   
+		const api = await fetch(`https://hn.algolia.com/api/v1/search_by_date?query=${query}&page=${page}`);
+		const response: THackerNewsResponse = await api.json();    
+		const savePosts:TPost[] = response.hits.filter((post, idx) => { 
+			if(post.author !== null && post.created_at !== null && post.story_title !== null && post.story_url !== null){   
+				if(postsState.favorites.find(x => x.story_id === post.story_id)){
+					response.hits[idx] = {...post, favorite: true};
+				}   
+				return post;
+			}
+		});        
+
+		dispatch({type: 'getPosts', payload: savePosts});
+	}
+
+	return (
+		<PostsContext.Provider
+		  value={{
+			postsState, 
+			addFavorite,
+			getPosts,
+			removeFavorite
+		  }}>
+		  {children}
+		</PostsContext.Provider>
+	  );
+
+}
