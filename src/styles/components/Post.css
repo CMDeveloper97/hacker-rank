@@ -14,10 +14,26 @@
 }
 
 .Post__main{ 
-	flex: 1;
-	display: flex;
-	flex-direction: column;
+	flex: 1;  
+	padding: 0 2rem 0 2.6rem;
+}
+.Post__hour{
+	display: inline-flex;
 	align-items: center;
+	margin: 0px 0px 7px 0px;
+}
+
+.Post__hour p{
+	font-size: 1.1rem;
+	color: #767676;
+	margin-left: 0.8rem;
+}
+
+.Post__text p{
+	font-size: 1.4rem;
+	line-height: 20px;
+	letter-spacing: 0.25px;
+	font-weight: 500;
 }
 
 .Post__button-container{
