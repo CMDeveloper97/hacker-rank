@@ -23,7 +23,7 @@ export const MainScreen = () => {
 
   useEffect(() => { 
     getPosts(query, page);
-  }, [query, page]);
+  }, [query, page, getPosts]);
 
   return (
     <>
