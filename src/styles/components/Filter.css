@@ -10,14 +10,8 @@
 		margin-top: 1rem; 
 		margin-bottom: 1rem;
 	}
-}
-
-.Filter select{ 
-	width: 100%;
-}
-
-@media only screen and (min-width: 768px) {
-	.Filter select{  
-		width: auto;
+	.Filter__main{
+		width: 25%;
 	}
-}
+} 
+

@@ -9,7 +9,6 @@ import React from '../assets/react.png'
 import Vue from '../assets/vue.png'
 
 type Props = {
-  query: OptionType;
   setQuery: Dispatch<SetStateAction<OptionType>>; 
 }
 
@@ -19,22 +18,23 @@ const options: OptionType[] = [
   { value: 'vue', label: 'VueJs', image: Vue  }
 ]
 
-export const Filter = ({query, setQuery}: Props) => {    
+export const Filter = ({setQuery}: Props) => {    
   return (
     <div className='Container Filter'>
-       <Select 
-        value={query}
-        isSearchable={false}
-        options={options} 
-        onChange={(e: any)=>setQuery(e)}
-        formatOptionLabel={opt=>(
-          <div style={{display:'flex', alignItems:'center'}}>
-            <img src={opt.image}  width="20px" alt="filter-img"/>
-            <p style={{marginLeft:'1rem'}}>{opt.label} </p>
-          </div>
-        )}
-
-      />  
+      <div className="Filter__main">
+        <Select 
+          defaultValue={options[0]} 
+          isSearchable={false}
+          options={options} 
+          onChange={(e: any)=>setQuery(e)}  
+          formatOptionLabel={opt=>(
+            <div style={{display:'flex', alignItems:'center'}}>
+              <img src={opt.image}  width="20px" alt="filter-img"/>
+              <p style={{marginLeft:'1rem'}}>{opt.label} </p>
+            </div>
+          )} 
+        />  
+      </div>
     </div>
   );
 };

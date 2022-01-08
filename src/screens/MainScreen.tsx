@@ -30,7 +30,7 @@ export const MainScreen = () => {
       <Header />
       <MainContainer>
         <FavsSelector selected={favsSelector} onClick={setFavsSelector} />
-        {!favsSelector && <Filter query={query} setQuery={setQuery} />} 
+        {!favsSelector && <Filter setQuery={setQuery} />} 
         <PostsContainer posts={favsSelector ? favorites : posts} /> 
         <Pagination page={page} totalPages={totalPages} setPage={setPage} />
       </MainContainer>
