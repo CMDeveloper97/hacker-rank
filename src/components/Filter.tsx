@@ -17,25 +17,7 @@ const options: OptionType[] = [
   { value: 'react', label: 'React', image: React  },
   { value: 'vue', label: 'VueJs', image: Vue  }
 ]
-
-const customStyles = {
-  option: (provided: any, state:any) => ({
-    ...provided,
-    borderBottom: '1px dotted pink',
-    color: state.isSelected ? 'red' : 'blue',
-    padding: 20,
-  }),
-  control: () => ({
-    // none of react-select's styles are passed to <Control />
-    width: 200,
-  }),
-  singleValue: (provided: any, state: any) => {
-    const opacity = state.isDisabled ? 0.5 : 1;
-    const transition = 'opacity 300ms';
-
-    return { ...provided, opacity, transition };
-  }
-}
+ 
 
 export const Filter = ({setQuery}: Props) => {    
   return (
