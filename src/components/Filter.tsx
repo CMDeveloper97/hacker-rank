@@ -27,14 +27,19 @@ export const Filter = ({setQuery}: Props) => {
           isSearchable={false}
           options={options} 
           onChange={(e: any)=>setQuery(e)}  
-          formatOptionLabel={opt=>(
-            <div style={{display:'flex', alignItems:'center'}}>
-              <img src={opt.image}  width="20px" alt="filter-img"/>
-              <p style={{marginLeft:'1rem'}}>{opt.label} </p>
-            </div>
-          )} 
+          formatOptionLabel={opt=><FilterOpt opt={opt}/> } 
         />  
       </div>
     </div>
   );
 };
+ 
+const FilterOpt = ({opt}: {opt: OptionType}) => {
+  return (
+    <div style={{display:'flex', alignItems:'center'}}>
+      <img src={opt.image}  width="20px" alt="filter-img"/>
+      <p style={{marginLeft:'1rem'}}>{opt.label} </p>
+    </div>
+  )
+}
+
