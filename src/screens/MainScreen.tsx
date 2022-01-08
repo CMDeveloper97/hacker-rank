@@ -11,13 +11,14 @@ import {
   
 import { useState } from "react";
 import { usePosts } from "../hooks/usePosts"; 
+import { OptionType } from "../types/OptionsType";
 
 export const MainScreen = () => {
   const { postsState, getPosts } = useContext(PostsContext);
   const { favorites, posts } = postsState; 
 
   const [favsSelector, setFavsSelector] = useState(false);
-  const [query, setQuery] = useState<string>("angular");
+  const [query, setQuery] = useState<OptionType>({value: 'angular', label: 'Angular'});
   const { page, totalPages, setPage } = usePosts();
 
   useEffect(() => { 

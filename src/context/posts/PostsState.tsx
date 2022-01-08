@@ -3,6 +3,7 @@ import { TPost } from '../../types/Posts';
 import { PostsReducer } from './PostsReducer'; 
 import { PostsContext } from './PostsContext';
 import { THackerNewsResponse } from '../../types/HacerNewsResponse';
+import { OptionType } from '../../types/OptionsType';
 
 export interface TPostsState {
 	posts: TPost[]; 
@@ -34,8 +35,8 @@ export const PostsProvider = ({children}: any) => {
 		dispatch({type: 'removeFavorite', payload: id});
 	}
 
-	const getPosts = async (query: string, page: number) => {   
-		const api = await fetch(`https://hn.algolia.com/api/v1/search_by_date?query=${query}&page=${page}`);
+	const getPosts = async (query: OptionType, page: number) => {   
+		const api = await fetch(`https://hn.algolia.com/api/v1/search_by_date?query=${query.value}&page=${page}`);
 		const response: THackerNewsResponse = await api.json();    
 		const savePosts:TPost[] = response.hits.filter(post => { 
 			if(post.author !== null && post.created_at !== null && post.story_title !== null && post.story_url !== null){    
