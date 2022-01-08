@@ -45,8 +45,7 @@ export const PostsProvider = ({children}: any) => {
 		});       
 		
 		savePosts.forEach((post, idx) => {
-			if(postsState.favorites.find(x => (x.objectID) === (post.objectID))){ 
-				console.log(post); 
+			if(postsState.favorites.find(x => (x.objectID) === (post.objectID))){  
 				savePosts[idx] = {...post, favorite: true};
 			} 
 		});
