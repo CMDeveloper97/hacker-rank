@@ -3,7 +3,7 @@ import { TPost } from '../../types/Posts';
 
 type PostAction = 
   | {type: 'addFavorite'; payload: TPost} 
-  | {type: 'removeFavorite', payload: number } 
+  | {type: 'removeFavorite', payload: string } 
   | {type: 'getPosts', payload: TPost[] } 
 
 export const PostsReducer = (state: TPostsState, action: PostAction): TPostsState => {
@@ -15,11 +15,11 @@ export const PostsReducer = (state: TPostsState, action: PostAction): TPostsStat
 				favorites: [...state.favorites, action.payload ]
 			} 
 		case 'removeFavorite':  
-			const newArray = state.favorites.filter(favorite=> favorite.story_id !== action.payload);
+			const newArray = state.favorites.filter(favorite=> favorite.objectID !== action.payload);
 			localStorage.setItem('favorites', JSON.stringify(newArray));
 			return {
 				...state,
-				favorites: state.favorites.filter(favorite=> favorite.story_id !== action.payload)
+				favorites: state.favorites.filter(favorite=> favorite.objectID !== action.payload)
 			}
 		case 'getPosts':   
 			return {

@@ -19,7 +19,7 @@ export const Post = (props: TPost) => {
   const onHeartPress = (e: any, post: TPost) =>{  
     e.stopPropagation();   
     if(favorite){ 
-      removeFavorite(post.story_id)
+      removeFavorite(post.objectID)
     }else {
       addFavorite(post);
     } 

@@ -7,8 +7,7 @@ type Props = {
 	posts: TPost[]; 
 }
 
-export const PostsContainer = ({posts}: Props) => { 
-	
+export const PostsContainer = ({posts}: Props) => {  
 	return (
 		<div className='Container Posts-container'>
 			{

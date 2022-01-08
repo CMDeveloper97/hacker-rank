@@ -1,7 +1,7 @@
  
 export type TPost ={
-	objectID: string;
-	story_id: number;
+	id: number;
+	objectID: string; 
 	author: string;
 	created_at: Date;
 	story_title: string;

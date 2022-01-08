@@ -7,7 +7,7 @@ interface PostsContextProps {
 	postsState: TPostsState; 
 	getPosts: (query: string, page: number) => void;
 	addFavorite: (post:TPost) => void; 
-	removeFavorite: (id: number) => void;
+	removeFavorite: (id: string) => void;
 } 
 
 export const PostsContext = createContext({} as PostsContextProps);
