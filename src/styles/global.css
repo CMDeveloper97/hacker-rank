@@ -3,6 +3,7 @@
 	--border-gray:#d6d6d6; 
 	--border-dark-gray:#979797; 
 	--text-gray: #828282;
+	--gray-hover: rgb(230, 230, 230);
 }
 
 html{ 

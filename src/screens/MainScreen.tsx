@@ -23,7 +23,8 @@ export const MainScreen = () => {
 
   useEffect(() => { 
     getPosts(query, page);
-  }, [query, page, getPosts]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query, page]);
 
   return (
     <>
