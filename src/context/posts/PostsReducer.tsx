@@ -1,13 +1,20 @@
  import { TPostsState } from './PostsState';
 import { TPost } from '../../types/Posts';
+import { OptionType } from '../../types/OptionsType';
 
 type PostAction = 
+    {type: 'changeFilter'; payload: OptionType} 
   | {type: 'addFavorite'; payload: TPost} 
   | {type: 'removeFavorite', payload: string } 
   | {type: 'getPosts', payload: TPost[] } 
 
 export const PostsReducer = (state: TPostsState, action: PostAction): TPostsState => {
 	switch (action.type) {
+		case 'changeFilter':
+			return{
+				...state,
+				filter: action.payload
+			}
 		case 'addFavorite': 
 			localStorage.setItem('favorites', JSON.stringify([...state.favorites, action.payload ]));
 			return {

@@ -8,17 +8,24 @@ import { OptionType } from "../../types/OptionsType";
 export interface TPostsState {
   posts: TPost[];
   favorites: TPost[];
+  filter: OptionType;
 }
 
 export const PostsProvider = ({ children }: any) => {
-  const favorites = localStorage.getItem("favorites") as string;
+  const favorites = localStorage.getItem("favorites") as string; 
+  const filter = localStorage.getItem("filter") as string;
 
   const initialState: TPostsState = {
     posts: [],
     favorites: favorites ? JSON.parse(favorites) : [],
+    filter: filter ? JSON.parse(filter) : {value:'angular', label: 'Angular' },
   };
 
   const [postsState, dispatch] = useReducer(PostsReducer, initialState);
+
+  const changeFilter = (filter: OptionType) => { 
+    dispatch({ type: 'changeFilter', payload: filter });
+  }
 
   const addFavorite = (post: TPost) => {
     var index = postsState.posts.map((x) => x.objectID).indexOf(post.objectID);
@@ -63,6 +70,7 @@ export const PostsProvider = ({ children }: any) => {
         addFavorite,
         getPosts,
         removeFavorite,
+        changeFilter
       }}
     >
       {children}

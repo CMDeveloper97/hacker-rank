@@ -1,16 +1,13 @@
 import "../styles/components/Filter.css";
 
-import { Dispatch, SetStateAction } from 'react';
+import { useContext } from 'react';
 import { OptionType } from "../types/OptionsType"; 
 import Select from 'react-select' 
 
 import Angular from '../assets/angular.png'
 import React from '../assets/react.png'
 import Vue from '../assets/vue.png'
-
-type Props = {
-  setQuery: Dispatch<SetStateAction<OptionType>>; 
-}
+import { PostsContext } from '../context/posts/PostsContext';
 
 const options: OptionType[] = [
   { value: 'angular', label: 'Angular', image: Angular },
@@ -18,16 +15,18 @@ const options: OptionType[] = [
   { value: 'vue', label: 'VueJs', image: Vue  }
 ]
 
-export const Filter = ({setQuery}: Props) => {      
+export const Filter = () => {      
+  const { changeFilter } = useContext(PostsContext); 
+
   return (
     <div className='Container Filter'>
-      <div className="Filter__main">
+      <div className="Filter__main"> 
         <Select 
           styles={customStyles}
           defaultValue={options[0]} 
           isSearchable={false}
           options={options} 
-          onChange={(e: any)=>setQuery(e)}  
+          onChange={(e: any)=>changeFilter(e)}  
           formatOptionLabel={opt=><FilterOpt opt={opt}/> } 
           components={{
             IndicatorSeparator: () => null

@@ -14,23 +14,22 @@ import { OptionType } from "../types/OptionsType";
 
 export const MainScreen = () => {
   const { postsState, getPosts } = useContext(PostsContext);
-  const { favorites, posts } = postsState; 
+  const { favorites, posts, filter } = postsState; 
 
-  const [favsSelector, setFavsSelector] = useState(false);
-  const [query, setQuery] = useState<OptionType>({value: 'angular', label: 'Angular'});
-  const { page, totalPages, setPage } = usePosts();
+  const [favsSelector, setFavsSelector] = useState(false); 
+  const { page  } = usePosts();
 
   useEffect(() => { 
-    getPosts(query, page);
+    getPosts(filter, page);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query, page]);
+  }, [filter, page]);
 
   return (
     <>
       <Header />
       <MainContainer>
         <FavsSelector selected={favsSelector} onClick={setFavsSelector} />
-        {!favsSelector && <Filter setQuery={setQuery} />} 
+        {!favsSelector && <Filter />} 
         <PostsContainer posts={favsSelector ? favorites : posts} /> 
         {/* <Pagination page={page} totalPages={totalPages} setPage={setPage} /> */}
       </MainContainer>
