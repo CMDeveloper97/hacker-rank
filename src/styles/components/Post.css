@@ -11,15 +11,15 @@
 	
 }  
 
+.Post:hover{
+	opacity: 0.4;
+}
+
 @media only screen and (min-width: 768px) {
 	.Post{ 
 		flex-basis: calc(50% - 1rem);  
 		flex-direction: row;
-	}
-	.Post:hover{
-		background-color: var(--gray-hover);
-	} 
-	
+	}  
 }
 
 .Post__main{ 
