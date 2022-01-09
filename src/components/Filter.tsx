@@ -1,7 +1,7 @@
 import "../styles/components/Filter.css";
 
 import { useContext } from 'react';
-import { OptionType } from "../types/OptionsType"; 
+import { OptionType } from '../types/OptionsType'; 
 import Select from 'react-select' 
 
 import Angular from '../assets/angular.png'
@@ -18,6 +18,12 @@ const options: OptionType[] = [
 export const Filter = () => {      
   const { postsState:{ filter }, changeFilter } = useContext(PostsContext); 
 
+  const onChangeFilter = (e:OptionType) => { 
+    if(e.value !== filter.value){ 
+      changeFilter(e);
+    }
+  }
+
   return (
     <div className='Container Filter'>
       <div className="Filter__main"> 
@@ -26,7 +32,7 @@ export const Filter = () => {
           styles={customStyles} 
           isSearchable={false}
           options={options} 
-          onChange={(e: any)=>changeFilter(e)}  
+          onChange={(e: any)=>onChangeFilter(e)}  
           formatOptionLabel={opt=><FilterOpt opt={opt}/> } 
           components={{
             IndicatorSeparator: () => null

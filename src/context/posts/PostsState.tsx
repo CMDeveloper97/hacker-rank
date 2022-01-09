@@ -4,6 +4,7 @@ import { PostsReducer } from "./PostsReducer";
 import { PostsContext } from "./PostsContext";
 import { THackerNewsResponse } from "../../types/HacerNewsResponse";
 import { OptionType } from "../../types/OptionsType";
+import Angular from '../../assets/angular.png'
 
 export interface TPostsState {
   posts: TPost[];
@@ -14,13 +15,13 @@ export interface TPostsState {
 }
 
 export const PostsProvider = ({ children }: any) => {
-  const favorites = localStorage.getItem("favorites") as string; 
-  const filter = localStorage.getItem("filter") as string; 
+  const favorites = localStorage.getItem("hacker_favorites") as string; 
+  const filter = localStorage.getItem("hacker_filter") as string; 
 
   const initialState: TPostsState = {
     posts: [],
     favorites: favorites ? JSON.parse(favorites) : [],
-    filter: filter ? JSON.parse(filter) : {value:'angular', label: 'Angular' },
+    filter: filter ? JSON.parse(filter) : {value:'angular', label: 'Angular', image: Angular  },
     page:1,
     totalPages: 1
   };

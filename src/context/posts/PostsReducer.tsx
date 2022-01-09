@@ -11,7 +11,7 @@ type PostAction =
 export const PostsReducer = (state: TPostsState, action: PostAction): TPostsState => {
 	switch (action.type) {
 		case 'changeFilter':
-			localStorage.setItem('filter', JSON.stringify(action.payload));
+			localStorage.setItem('hacker_filter', JSON.stringify(action.payload));
 			return{
 				...state,
 				filter: action.payload,
@@ -19,14 +19,14 @@ export const PostsReducer = (state: TPostsState, action: PostAction): TPostsStat
 				posts: []
 			}
 		case 'addFavorite': 
-			localStorage.setItem('favorites', JSON.stringify([...state.favorites, action.payload ]));
+			localStorage.setItem('hacker_favorites', JSON.stringify([...state.favorites, action.payload ]));
 			return {
 				...state,
 				favorites: [...state.favorites, action.payload ]
 			} 
 		case 'removeFavorite':  
 			const newArray = state.favorites.filter(favorite=> favorite.objectID !== action.payload);
-			localStorage.setItem('favorites', JSON.stringify(newArray));
+			localStorage.setItem('hacker_favorites', JSON.stringify(newArray));
 			return {
 				...state,
 				favorites: state.favorites.filter(favorite=> favorite.objectID !== action.payload)
