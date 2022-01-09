@@ -16,21 +16,23 @@ export const MainScreen = () => {
   const { postsState, getPosts } = useContext(PostsContext);
   const { favorites, posts, filter } = postsState; 
 
-  const [favsSelector, setFavsSelector] = useState(false); 
+  const [isFav, setIsFav] = useState(false); 
   const { page  } = usePosts();
 
   useEffect(() => { 
+    console.log(filter);
+    
     getPosts(filter, page);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filter, page]);
+  }, [filter]);
 
   return (
     <>
       <Header />
       <MainContainer>
-        <FavsSelector selected={favsSelector} onClick={setFavsSelector} />
-        {!favsSelector && <Filter />} 
-        <PostsContainer posts={favsSelector ? favorites : posts} /> 
+        <FavsSelector selected={isFav} onClick={setIsFav} />
+        {!isFav && <Filter />} 
+        <PostsContainer posts={isFav ? favorites : posts} /> 
         {/* <Pagination page={page} totalPages={totalPages} setPage={setPage} /> */}
       </MainContainer>
     </>

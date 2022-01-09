@@ -12,7 +12,7 @@ import { PostsContext } from '../context/posts/PostsContext';
 const options: OptionType[] = [
   { value: 'angular', label: 'Angular', image: Angular },
   { value: 'react', label: 'React', image: React  },
-  { value: 'vue', label: 'VueJs', image: Vue  }
+  { value: 'vue', label: 'VueJS', image: Vue  }
 ]
 
 export const Filter = () => {      
