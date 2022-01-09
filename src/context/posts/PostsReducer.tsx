@@ -11,6 +11,7 @@ type PostAction =
 export const PostsReducer = (state: TPostsState, action: PostAction): TPostsState => {
 	switch (action.type) {
 		case 'changeFilter':
+			localStorage.setItem('filter', JSON.stringify(action.payload));
 			return{
 				...state,
 				filter: action.payload

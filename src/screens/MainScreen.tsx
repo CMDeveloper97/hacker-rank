@@ -19,9 +19,7 @@ export const MainScreen = () => {
   const [isFav, setIsFav] = useState(false); 
   const { page  } = usePosts();
 
-  useEffect(() => { 
-    console.log(filter);
-    
+  useEffect(() => {  
     getPosts(filter, page);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);

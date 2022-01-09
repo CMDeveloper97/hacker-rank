@@ -16,14 +16,14 @@ const options: OptionType[] = [
 ]
 
 export const Filter = () => {      
-  const { changeFilter } = useContext(PostsContext); 
+  const { postsState:{ filter }, changeFilter } = useContext(PostsContext); 
 
   return (
     <div className='Container Filter'>
       <div className="Filter__main"> 
         <Select 
-          styles={customStyles}
-          defaultValue={options[0]} 
+          value={filter}
+          styles={customStyles} 
           isSearchable={false}
           options={options} 
           onChange={(e: any)=>changeFilter(e)}  

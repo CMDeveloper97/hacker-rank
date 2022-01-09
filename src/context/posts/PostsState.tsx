@@ -13,7 +13,7 @@ export interface TPostsState {
 
 export const PostsProvider = ({ children }: any) => {
   const favorites = localStorage.getItem("favorites") as string; 
-  const filter = localStorage.getItem("filter") as string;
+  const filter = localStorage.getItem("filter") as string; 
 
   const initialState: TPostsState = {
     posts: [],
