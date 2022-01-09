@@ -10,7 +10,7 @@ type Props = {
 export const PostsContainer = ({posts}: Props) => {  
 	return (
 		<div className='Container Posts-container'>
-			{
+			{	
 				posts.map(post=> ( 
 					<Post key={post.objectID} {...post}/>
 				))

@@ -18,12 +18,8 @@ export const Post = (props: TPost) => {
 
   const onHeartPress = (e: any, post: TPost) =>{  
     e.stopPropagation();   
-    if(favorite){ 
-      removeFavorite(post.objectID)
-    }else {
-      addFavorite(post);
-    } 
-
+    if(favorite) removeFavorite(post.objectID)
+    else addFavorite(post);
   }
 
   return (
