@@ -22,17 +22,17 @@ export const PostsContainer = ({ posts, favSelected }: Props) => {
 
   return (
     <>
-      {favSelected ? ( 
-	   <PostsContainerMain posts={posts} />
+      {favSelected ? (
+        <PostsContainerMain posts={posts} />
       ) : (
-			<InfiniteScroll
-			dataLength={page * 20}
-			next={fetchMoreData}
-			hasMore={page <= totalPages}
-			loader={<h4 className="Posts__loading">Loading...</h4>}
-		>
-			<PostsContainerMain posts={posts} />
-		</InfiniteScroll>
+        <InfiniteScroll
+          dataLength={page * 20}
+          next={fetchMoreData}
+          hasMore={page <= totalPages}
+          loader={<h4 className="Posts__loading">Loading...</h4>}
+        >
+          <PostsContainerMain posts={posts} />
+        </InfiniteScroll>
       )}
     </>
   );
@@ -41,8 +41,8 @@ export const PostsContainer = ({ posts, favSelected }: Props) => {
 export const PostsContainerMain = ({ posts }: { posts: TPost[] }) => {
   return (
     <div className="Container Posts-container">
-      {posts.map((post) => (
-        <Post key={post.objectID} {...post} />
+      {posts.map((post, idx) => (
+        <Post key={post.objectID + idx} {...post} />
       ))}
     </div>
   );
