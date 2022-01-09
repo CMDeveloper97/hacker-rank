@@ -18,6 +18,35 @@ const options: OptionType[] = [
   { value: 'vue', label: 'VueJs', image: Vue  }
 ]
 
+export const Filter = ({setQuery}: Props) => {      
+  return (
+    <div className='Container Filter'>
+      <div className="Filter__main">
+        <Select 
+          styles={customStyles}
+          defaultValue={options[0]} 
+          isSearchable={false}
+          options={options} 
+          onChange={(e: any)=>setQuery(e)}  
+          formatOptionLabel={opt=><FilterOpt opt={opt}/> } 
+          components={{
+            IndicatorSeparator: () => null
+          }}
+        />  
+      </div>
+    </div>
+  );
+};
+ 
+const FilterOpt = ({opt}: {opt: OptionType}) => {
+  return (
+    <div style={{display:'flex', alignItems:'center'}}>
+      <img src={opt.image}  width="20px" alt="filter-img"/>
+      <p style={{marginLeft:'1rem'}}>{opt.label} </p>
+    </div>
+  )
+}  
+
 const customStyles = {
   control: (base: any) => ({
     ...base,
@@ -53,33 +82,3 @@ const customStyles = {
     }
   }, 
 }
-
-export const Filter = ({setQuery}: Props) => {    
-  return (
-    <div className='Container Filter'>
-      <div className="Filter__main">
-        <Select 
-          styles={customStyles}
-          defaultValue={options[0]} 
-          isSearchable={false}
-          options={options} 
-          onChange={(e: any)=>setQuery(e)}  
-          formatOptionLabel={opt=><FilterOpt opt={opt}/> } 
-          components={{
-            IndicatorSeparator: () => null
-          }}
-        />  
-      </div>
-    </div>
-  );
-};
- 
-const FilterOpt = ({opt}: {opt: OptionType}) => {
-  return (
-    <div style={{display:'flex', alignItems:'center'}}>
-      <img src={opt.image}  width="20px" alt="filter-img"/>
-      <p style={{marginLeft:'1rem'}}>{opt.label} </p>
-    </div>
-  )
-}
-

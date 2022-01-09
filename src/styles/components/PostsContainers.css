@@ -1,11 +1,14 @@
-.Posts-container{
-	
-}
-
-@media only screen and (min-width: 768px) {
+ @media only screen and (min-width: 768px) {
 	.Posts-container{ 
 		display: flex;
 		justify-content: space-between;
 		flex-wrap: wrap;
 	}
+}
+
+.Posts__noPosts{
+	text-align: center;
+    width: 100%;
+    font-size: 2rem; 
+    margin: 2rem 0; 
 }

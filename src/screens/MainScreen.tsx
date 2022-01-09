@@ -5,8 +5,7 @@ import {
 	MainContainer,
 	PostsContainer,
 	FavsSelector,
-	Filter,
-	Pagination, 
+	Filter, 
   } from "../components/"; 
   
 import { useState } from "react";
@@ -33,7 +32,7 @@ export const MainScreen = () => {
         <FavsSelector selected={favsSelector} onClick={setFavsSelector} />
         {!favsSelector && <Filter setQuery={setQuery} />} 
         <PostsContainer posts={favsSelector ? favorites : posts} /> 
-        <Pagination page={page} totalPages={totalPages} setPage={setPage} />
+        {/* <Pagination page={page} totalPages={totalPages} setPage={setPage} /> */}
       </MainContainer>
     </>
   );
