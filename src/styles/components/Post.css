@@ -7,8 +7,7 @@
 	cursor: pointer; 
 
 	flex-direction: column;
-	min-height: 10rem;
-	
+	min-height: 10rem; 
 }  
 
 .Post:hover{
@@ -24,10 +23,8 @@
 
 .Post__main{ 
 	flex: 1;  
-	padding: 2rem 2rem 2rem 2.6rem;
-
-	text-align: center;
-
+	padding: 2rem 2rem 2rem 2.6rem; 
+	text-align: center; 
 }
 
 @media only screen and (min-width: 768px) {

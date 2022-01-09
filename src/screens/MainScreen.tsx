@@ -1,8 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { PostsContext } from "../context/posts/PostsContext"; 
 import {
-	Header,
-	MainContainer,
+	Header, 
 	PostsContainer,
 	FavsSelector,
 	Filter, 
@@ -26,12 +25,10 @@ export const MainScreen = () => {
   return (
     <>
       <Header />
-      <MainContainer>
-        <FavsSelector selected={isFav} onClick={setIsFav} />
-        {!isFav && <Filter />} 
-        <PostsContainer posts={isFav ? favorites : posts} /> 
-        {/* <Pagination page={page} totalPages={totalPages} setPage={setPage} /> */}
-      </MainContainer>
+      <FavsSelector selected={isFav} onClick={setIsFav} />
+       {!isFav && <Filter />} 
+       <PostsContainer posts={isFav ? favorites : posts} />  
+        {/* <Pagination page={page} totalPages={totalPages} setPage={setPage} /> */} 
     </>
   );
 };
