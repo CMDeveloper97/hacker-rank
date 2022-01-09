@@ -6,7 +6,7 @@ type PostAction =
     {type: 'changeFilter'; payload: OptionType} 
   | {type: 'addFavorite'; payload: TPost} 
   | {type: 'removeFavorite', payload: string } 
-  | {type: 'getPosts', payload: TPost[] } 
+  | {type: 'getPosts', payload: {posts: TPost[], totalPages: number} } 
 
 export const PostsReducer = (state: TPostsState, action: PostAction): TPostsState => {
 	switch (action.type) {
@@ -14,7 +14,9 @@ export const PostsReducer = (state: TPostsState, action: PostAction): TPostsStat
 			localStorage.setItem('filter', JSON.stringify(action.payload));
 			return{
 				...state,
-				filter: action.payload
+				filter: action.payload,
+				page: 1,
+				posts: []
 			}
 		case 'addFavorite': 
 			localStorage.setItem('favorites', JSON.stringify([...state.favorites, action.payload ]));
@@ -29,10 +31,13 @@ export const PostsReducer = (state: TPostsState, action: PostAction): TPostsStat
 				...state,
 				favorites: state.favorites.filter(favorite=> favorite.objectID !== action.payload)
 			}
-		case 'getPosts':   
+		case 'getPosts':     
+		
 			return {
 				...state,
-				posts: action.payload
+				posts: state.posts.concat(action.payload.posts),
+				page: state.page+=1,
+				totalPages: action.payload.totalPages
 			}
 		default:
 			return state;

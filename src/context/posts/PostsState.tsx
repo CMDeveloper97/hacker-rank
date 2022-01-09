@@ -9,6 +9,8 @@ export interface TPostsState {
   posts: TPost[];
   favorites: TPost[];
   filter: OptionType;
+  page: number;
+  totalPages: number;
 }
 
 export const PostsProvider = ({ children }: any) => {
@@ -19,6 +21,8 @@ export const PostsProvider = ({ children }: any) => {
     posts: [],
     favorites: favorites ? JSON.parse(favorites) : [],
     filter: filter ? JSON.parse(filter) : {value:'angular', label: 'Angular' },
+    page:1,
+    totalPages: 1
   };
 
   const [postsState, dispatch] = useReducer(PostsReducer, initialState);
@@ -42,7 +46,7 @@ export const PostsProvider = ({ children }: any) => {
     dispatch({ type: "removeFavorite", payload: id });
   };
 
-  const getPosts = async (query: OptionType, page: number) => {
+  const getPosts = async (query: OptionType, page: number,) => {
     const api = await fetch(
       `https://hn.algolia.com/api/v1/search_by_date?query=${query.value}&page=${page}`
     );
@@ -60,7 +64,7 @@ export const PostsProvider = ({ children }: any) => {
       }
     });
 
-    dispatch({ type: "getPosts", payload: savePosts });
+    dispatch({ type: "getPosts", payload: {posts: savePosts, totalPages: response.nbPages} });
   };
 
   return (
