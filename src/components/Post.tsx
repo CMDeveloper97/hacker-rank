@@ -37,8 +37,8 @@ export const Post = (props: TPost) => {
           <p>{story_title}</p>
         </div>
       </div>
-      <div className='Post__button-container'>
-        <img className='Post__button' src={ favorite ? Heart : HeartOutline} alt="" onClick={(e)=>onHeartPress(e, props)} />
+      <div className='Post__button-container' onClick={(e)=>onHeartPress(e, props)}>
+        <img className='Post__button' src={ favorite ? Heart : HeartOutline} alt=""  />
       </div> 
     </div>
   );

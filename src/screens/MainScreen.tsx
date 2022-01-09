@@ -9,8 +9,7 @@ import {
   } from "../components/"; 
   
 import { useState } from "react";
-import { usePosts } from "../hooks/usePosts"; 
-import { OptionType } from "../types/OptionsType";
+import { usePosts } from "../hooks/usePosts";  
 
 export const MainScreen = () => {
   const { postsState, getPosts } = useContext(PostsContext);
