@@ -4,35 +4,58 @@
 	margin:1rem 0; 
 	display: flex;
     align-items: center; 
-	cursor: pointer;
-}
+	cursor: pointer; 
 
-.Post:hover{
-	background-color: var(--gray-hover);
-}
-
+	flex-direction: column;
+	min-height: 10rem;
+	
+}  
 
 @media only screen and (min-width: 768px) {
 	.Post{ 
-		flex-basis: calc(50% - 1rem); 
+		flex-basis: calc(50% - 1rem);  
+		flex-direction: row;
 	}
+	.Post:hover{
+		background-color: var(--gray-hover);
+	} 
+	
 }
 
 .Post__main{ 
 	flex: 1;  
-	padding: 0 2rem 0 2.6rem;
+	padding: 2rem 2rem 2rem 2.6rem;
+
+	text-align: center;
+
 }
+
+@media only screen and (min-width: 768px) {
+	.Post__main{ 
+		padding: 1.6rem 2rem 1.6rem 2.6rem;
+		text-align: start;
+	}
+} 
+
 .Post__hour{
-	display: inline-flex;
-	align-items: center;
-	margin: 0px 0px 7px 0px;
+	margin-bottom: 1rem;
 }
 
 .Post__hour p{
 	font-size: 1.1rem;
-	color: #767676;
-	margin-left: 0.8rem;
+	color: #767676; 
 }
+
+@media only screen and (min-width: 468px) {
+	.Post__hour{ 
+		display: inline-flex;
+		align-items: center;
+		margin: 0px 0px 7px 0px;
+	}
+	.Post__hour p{ 
+		margin-left: 0.8rem;
+	}
+}   
 
 .Post__text p{
 	font-size: 1.4rem;
@@ -42,9 +65,9 @@
 }
 
 .Post__button-container{
-	width: 12%;
+	width: 100%; 
+	height: 6rem;
 
-	padding:3rem 0.5rem;
 	background-color: #F5F5F5;
 
 	display: flex;
@@ -53,6 +76,14 @@
 
 	border-top-right-radius: 0.6rem; 
 	border-bottom-right-radius: 0.6rem;
+}
+
+
+@media only screen and (min-width: 768px) {
+	.Post__button-container{ 
+		width: 12%;   
+		height: 100%;
+	}
 }
 
 .Post__button{
