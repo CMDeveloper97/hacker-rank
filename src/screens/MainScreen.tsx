@@ -8,6 +8,7 @@ import {
   } from "../components/"; 
   
 import { useState } from "react"; 
+import { ScrollTop } from "../components/ScrollTop";
 
 export const MainScreen = () => {
   const { postsState, getPosts } = useContext(PostsContext);
@@ -22,10 +23,11 @@ export const MainScreen = () => {
 
   return (
     <>
+      <ScrollTop/>
       <Header />
       <FavsSelector selected={isFav} onClick={setIsFav} />
       {!isFav && <Filter />} 
-      <PostsContainer posts={isFav ? favorites : posts} favSelected={isFav} />   
+      <PostsContainer posts={isFav ? favorites : posts} favSelected={isFav} />    
     </>
   );
 };

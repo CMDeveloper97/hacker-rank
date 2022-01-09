@@ -1,0 +1,27 @@
+.Scroll__top{
+	position: fixed;
+	bottom: 20px;
+	right: 20px; 
+	background: var(--blue); 
+	cursor: pointer;
+	border-radius: 50%; 
+	box-shadow: 0 5px 10px #ccc;
+	padding:2rem;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.Scroll__top:hover{ 
+	opacity: 0.8;
+}
+
+
+.Scroll__arrow{
+	border: solid white;
+	border-width: 0 3px 3px 0; 
+	padding: 3px 3px 3px 3px;
+	transform: rotate(-135deg);
+	-webkit-transform: rotate(-135deg);
+}
